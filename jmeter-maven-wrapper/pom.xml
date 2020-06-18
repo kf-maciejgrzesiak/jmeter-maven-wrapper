@@ -16,6 +16,10 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
+	<xms>512</xms>
+	<xmx>2048</xmx>
+	<LogLevel>debug</LogLevel>
+	<env>test</env>
   </properties>
 
   <dependencies>
@@ -59,8 +63,14 @@
 			</executions>
 			<configuration>
 				<propertiesUser>
-					<loops>2</loops>
+					<loops>${loops}</loops>
 				</propertiesUser>
+				<jMeterProcessJVMSettings>
+                    <xms>${xms}</xms>
+                    <xmx>${xmx}</xmx>
+                </jMeterProcessJVMSettings>
+				<overrideRootLogLevel>${LogLevel}</overrideRootLogLevel>
+				<propertiesFilesDirectory>src/test/jmeter/props/${env}</propertiesFilesDirectory>
             </configuration>
 		</plugin>
 		<plugin>
